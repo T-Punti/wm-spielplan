@@ -1,0 +1,1 @@
+<!-- src: https://github.com/htlWels/WM/blob/main/spielplan.json -->
