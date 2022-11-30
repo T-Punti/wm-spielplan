@@ -1,20 +1,24 @@
 <template>
-  <div id="app">
-    <Header msg="WM-Spielplan" />
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <Suspense>
+    <template #default>
+      <Header msg="WM-Spielplan" />
+      <Body />
+    </template>
+    <template #fallback>
+      <span>Loading ...</span>
+    </template>
+  </Suspense>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 import Header from './components/Header.vue';
+import Body from './components/Body.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Header,
+    Body,
   },
 };
 </script>
