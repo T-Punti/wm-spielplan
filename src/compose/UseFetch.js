@@ -1,6 +1,6 @@
 import { ref, reactive, toRefs } from 'vue';
 
-export function useFetch(url, options) {
+async export function useFetch(url, options) {
   const data = ref(null);
   const state = reactive({
     error: null,
