@@ -9,10 +9,8 @@
         <h2>Loading DATA ...</h2>
       </div>
     </div>
-    <div class="Gruppe">
-      <div v-for="group in data.groups">
-        <Gruppe :gruppe="group" :flags="flags" />
-      </div>
+    <div v-for="group in data.groups">
+      <Gruppe :gruppe="group" :flags="data.flags" />
     </div>
   </div>
 </template>
