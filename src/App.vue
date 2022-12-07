@@ -1,7 +1,6 @@
 <template>
   <Suspense>
     <template #default>
-      <Header msg="WM-Spielplan" />
       <Body />
     </template>
     <template #fallback>
@@ -11,13 +10,11 @@
 </template>
 
 <script>
-import Header from './components/Header.vue';
 import Body from './components/Body.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
     Body,
   },
 };

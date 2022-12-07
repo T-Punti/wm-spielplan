@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="ready">
     <div v-if="error">
       <h2>{{ error }}</h2>
     </div>
@@ -9,17 +9,12 @@
       </div>
     </div>
     <div class="Gruppe">
-      <div v-for="items in data">
-        <div v-for="country in items">
-          <img :src="country.link" alt="flag" />
-          {{ country.country }}
-        </div>
-        <div v-for="group in items">
-          <Gruppe :gruppe="group" />
-        </div>
+      <div v-for="country in data.flags">
+        <img :src="country.link" alt="flag" /> 
+        {{ country.country }}
       </div>
-      <div v-for="(item, index) in data.flags" :key="index">
-        {{ item.country }}
+      <div v-for="group in data.groups">
+        <Gruppe :gruppe="group" />
       </div>
     </div>
   </div>
@@ -35,13 +30,14 @@ export default {
     Gruppe,
   },
   async setup() {
-    const { data, error, loading } = useFetch(
+    const { error, loading, ready, data } = useFetch(
       'https://raw.githubusercontent.com/htlWels/WM/main/spielplan.json',
       {}
     );
     return {
       data,
       error,
+      ready,
       loading,
     };
   },

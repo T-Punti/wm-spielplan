@@ -1,7 +1,6 @@
 <template>
   <div class="gruppe">
     <h2>{{ gruppe.group }}</h2>
-    
   </div>
 </template>
 

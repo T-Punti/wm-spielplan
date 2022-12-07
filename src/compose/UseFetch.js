@@ -1,28 +1,34 @@
-import { ref, reactive, toRefs } from 'vue';
+import { ref } from 'vue';
 
-async export function useFetch(url, options) {
+export function useFetch(url, options) {
+  //https://vuejs.org/api/reactivity-core.html#reactive
+
+  const error = ref('');
+  const loading = ref(false);
+  const ready = ref(false);
   const data = ref(null);
-  const state = reactive({
-    error: null,
-    loading: false,
-  });
 
-  const fetchData = async () => {
-    state.loading = false;
+  /*
+  https://medium.com/nerd-for-tech/fetch-api-async-await-in-a-few-bites-6b4f19f7db9e
+*/
+  async function fetchData() {
+    loading.value = true;
     try {
       const res = await fetch(url, options);
-      data.value = await res.json();
-    } catch (err) {
-      state.error = err;
+      if (res.status != 200) {
+        error.value = res.statusText;
+      } else {
+        data.value = await res.json();
+      }
+    } catch (e) {
+      error.value = e;
     } finally {
-      state.loading = false;
+      loading.value = false;
+      ready.value = true;
     }
-  };
-
+  }
   fetchData();
+  return { error, loading, ready, data };
 
-  return {
-    data,
-    ...toRefs(state)
-  };
+  //https://vuejs.org/api/reactivity-utilities.html#isref
 }
