@@ -1,5 +1,6 @@
 <template>
   <div v-if="ready">
+    <Header msg="WM-Spielplan" />
     <div v-if="error">
       <h2>{{ error }}</h2>
     </div>
@@ -9,12 +10,8 @@
       </div>
     </div>
     <div class="Gruppe">
-      <div v-for="country in data.flags">
-        <img :src="country.link" alt="flag" /> 
-        {{ country.country }}
-      </div>
       <div v-for="group in data.groups">
-        <Gruppe :gruppe="group" />
+        <Gruppe :gruppe="group" :flags="flags" />
       </div>
     </div>
   </div>
@@ -23,22 +20,26 @@
 <script>
 import { useFetch } from '../compose/UseFetch.js';
 import Gruppe from './Gruppe.vue';
+import Header from './Header.vue';
 
 export default {
   name: 'Body',
   components: {
     Gruppe,
+    Header,
   },
   async setup() {
     const { error, loading, ready, data } = useFetch(
       'https://raw.githubusercontent.com/htlWels/WM/main/spielplan.json',
       {}
     );
+    const flags = data.flags;
     return {
       data,
       error,
       ready,
       loading,
+      flags,
     };
   },
 };
