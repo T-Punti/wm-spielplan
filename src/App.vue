@@ -30,7 +30,8 @@ export default {
   margin-top: 20px;
 }
 body {
-  background: url('https://img.freepik.com/premium-vector/qatar-2022-fifa-world-cup-background-image-maroon-color-background_741253-3.jpg?w=2000')
+  background: url('https://img.freepik.com/free-photo/celebrating-football-3d-illustration_1419-2824.jpg?w=1380&t=st=1671005717~exp=1671006317~hmac=898ac4618c678832c0aa06f68b5af37e4daeb62170ffa821a1e20b2331ceaf93')
     fixed;
+  background-size: 100% 100%;
 }
 </style>

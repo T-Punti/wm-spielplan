@@ -13,6 +13,13 @@
       <Gruppe :gruppe="group" :flags="data.flags" />
     </div>
   </div>
+  <div id="pic">
+    <a
+      href="https://www.freepik.com/free-photo/celebrating-football-3d-illustration_33296209.htm#query=wm%20katar%20background&position=39&from_view=search&track=ais"
+      >Image by Kerfin7</a
+    >
+    on Freepik
+  </div>
 </template>
 
 <script>
@@ -44,4 +51,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+#pic {
+  font-size: 5pt;
+}
+</style>
