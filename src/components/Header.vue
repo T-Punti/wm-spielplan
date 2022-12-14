@@ -19,5 +19,6 @@ export default {
 <style scoped>
 h1 {
   border-bottom: 1px solid;
+  color: rgba(184, 184, 184, 1);
 }
 </style>
